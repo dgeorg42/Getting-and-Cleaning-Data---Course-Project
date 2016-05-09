@@ -1,8 +1,8 @@
 # Getting and Cleaning Data - Course Project
 
 ## Analysis of the Human Activity Recognition Using Smartphones Dataset
-### CODEBOOK.md
-### Dale V. Georg
+CODEBOOK.md
+Dale V. Georg
 
 ## Introduction
 This project contains a single R script (run_analysis.R) which can be used to perform an analysis of the "Human Activity Recognition Using Smartphones" datasets.  Those datasets and their descriptions can be found at the following URLs:

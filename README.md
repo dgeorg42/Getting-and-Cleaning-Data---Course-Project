@@ -1,8 +1,8 @@
 # Getting and Cleaning Data - Course Project
 
 ## Analysis of the Human Activity Recognition Using Smartphones Dataset
-### README.md
-### Dale V. Georg
+README.md
+Dale V. Georg
 
 ## Introduction
 This project contains a single R script which can be used to perform an analysis of the "Human Activity Recognition Using Smartphones" datasets.  Those datasets and their descriptions can be found at the following URLs:
@@ -13,8 +13,8 @@ This project contains a single R script which can be used to perform an analysis
 After downloading the datafile ZIP, unzip it to the same directory as the run\_analysis.R script in this package.  If you've done this correctly, you will have run\_analysis.R at the same level as the "UCI HAR Dataset" directory.  Set your working directory to the directory where these two reside.
 
 For example, if you have:
-	~/my\_stuff/R/run\_analysis.R
-	~/my\_stuff/R/UCI HAR Dataset
+* ~/my\_stuff/R/run\_analysis.R
+* ~/my\_stuff/R/UCI HAR Dataset
 
 Then you would set your working directory to ~/my\_stuff/R
 
