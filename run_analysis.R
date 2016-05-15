@@ -1,3 +1,6 @@
+# run_analysis.R
+# Version 1.1
+
 # First clear the environment to give us a fresh start.
 rm(list = ls())
 
@@ -35,6 +38,18 @@ all_sample_data <- rbind(x_test, x_train)
 
 # Since the columns in all_sample_data are named unhelpfully as "V1", V2", etc., we will
 # rename them with the values from the "features" file.
+#
+# Improvement for V1.1:
+# Since the feature names are also not very readable, we will expand some of the 
+# abbreviations to make them a little more friendly.
+features[,2] <- gsub("\\(\\)", "", features[,2])
+features[,2] <- gsub("BodyBody", "Body", features[,2])
+features[,2] <- gsub("tBodyGyro-?", "Body Gyroscope [Time] - ", features[,2])
+features[,2] <- gsub("fBodyGyro-?", "Body Gyroscope [Frequency] - ", features[,2])
+features[,2] <- gsub("tBodyAcc-?", "Body Accelerometer [Time] - ", features[,2])
+features[,2] <- gsub("fBodyAcc-?", "Body Accelerometer [Frequency] - ", features[,2])
+features[,2] <- gsub("tGravityAcc-?", "Gravity Accelerometer [Time] - ", features[,2])
+
 colnames(all_sample_data) <- features[,2]
 
 # Now we will do a similar thing for the subject data, row binding the "train" group
@@ -79,7 +94,12 @@ tidy_data <- cbind(all_sample_data, cbind("activity"=all_activities[,c("activity
 
 # Next we need to filter the columns so that we include activity, subject, and then only those 
 # columns containing means and standard deviations
-meanstd <- tidy_data[, grep("-mean\\(\\)$|-std\\(\\)$|^activity$|^subject$", colnames(tidy_data))]
+
+# Bug fix: My original submission was looking for "mean" and "std" only at the ends of the column names,
+# resulting in some of the columns we wanted being excluded.
+
+# meanstd <- tidy_data[, grep("-mean\\(\\)$|-std\\(\\)$|^activity$|^subject$", colnames(tidy_data))]
+meanstd <- tidy_data[, grep("-mean|-std|^activity$|^subject$", colnames(tidy_data))]
 
 # Next thing we need to do is to summarize the data by subject and activity
 meanstd_summary <- aggregate(meanstd, list(meanstd$subject, meanstd$activity), mean)
